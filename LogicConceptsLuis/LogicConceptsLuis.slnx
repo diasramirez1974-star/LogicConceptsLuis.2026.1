@@ -2,4 +2,7 @@
   <Folder Name="/01/">
     <Project Path="NumberOddOrNot/NumberOddOrNot.csproj" Id="38a5f764-52c8-4afd-a68e-4df4ac8404d0" />
   </Folder>
+  <Folder Name="/02/">
+    <Project Path="Highest_Number/Highest_Number.csproj" Id="9139039e-adc4-4850-9527-1755765a3a65" />
+  </Folder>
 </Solution>
