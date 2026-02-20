@@ -1,47 +1,64 @@
-﻿using System.ComponentModel.Design;
+﻿using Shared;
+using System.ComponentModel.Design;
+var answer = string.Empty;
+var options = new List<string> { "s", "n" };
+do
+{
+    Console.WriteLine("Ingrese tres números diferentes");
+    var a = ConsoleExtension.GetInt("Ingrese el primer número: ");
+    var b = ConsoleExtension.GetInt("Ingrese el segundo número: ");
+    if (a==b)
+    {
+        Console.WriteLine("Los números deben ser diferentes, intente de nuevo.");
+        continue;
+    }
+    var c = ConsoleExtension.GetInt("Ingrese el tercer número: ");
+    if (b==c || c==a)
+    {
+        Console.WriteLine("Los números deben ser diferentes, intente de nuevo.");
+        continue;
+    }
+    if (a > b && a > c)
+    {
+        if (b > c)
+        {
+            Console.WriteLine($"El número mayor es: {a}, el número del medio es {b}, el número menor es {c} ");
+        }
+        else
+        {
+            Console.WriteLine($"El número mayor es: {a}, el número del medio es {c}, el número menor es {b} ");
+        }
 
-Console.Write("Ingrese el primer número:");
-var number1String = Console.ReadLine();
-var number1Int = int.Parse(number1String!);
-Console.Write("Ingrese el segundo número:");
-var number2String = Console.ReadLine();
-var number2Int = int.Parse(number2String!);
-Console.Write("Ingrese el tercer número:");
-var number3String = Console.ReadLine();
-var number3Int = int.Parse(number3String!);
-if (number1Int > number2Int && number1Int > number3Int)
-{
-    Console.Write($"El número mayor es {number1Int}");
-    if (number2Int < number1Int && number2Int > number3Int)
-    {
-        Console.Write($"El número del medio es {number2Int}");
     }
-    else
+    else if (b > a && b > c)
     {
-        Console.Write($"El número del medio es {number3Int}");
+        if (a > c)
+        {
+            Console.WriteLine($"El número mayor es: {b}, el número del medio es {a}, el número menor es {c} ");
+        }
+        else
+        {
+            Console.WriteLine($"El número mayor es: {b}, el número del medio es {c}, el número menor es {a} ");
+        }
     }
+    else if (c > a && c > b)
+    {
+        if (a > b)
+        {
+            Console.WriteLine($"El número mayor es: {c}, el número del medio es {a}, el número menor es {b} ");
+        }
+        else
+        {
+            Console.WriteLine($"El número mayor es: {c}, el número del medio es {b}, el número menor es {a} ");
+        }
+    }
+    do
+    {
+        answer = ConsoleExtension.GetValidOptions("¿Deseas continuar [S]í, [N]o?: ", options);
+    } while (!options.Any(x => x.Equals(answer, StringComparison.CurrentCultureIgnoreCase)));
+
 }
-if (number2Int > number1Int && number2Int > number3Int)
-{
-    Console.Write($"El número mayor es {number2Int}");
-    if (number1Int < number2Int && number1Int > number3Int)
-    {
-        Console.Write($"El número del medio es {number1Int}");
-    }
-    else
-    {
-        Console.Write($"El número del medio es {number3Int}");
-    }
-}
-if (number3Int > number1Int && number3Int > number2Int)
-{
-    Console.Write($"El número mayor es {number3Int}");
-    if (number2Int < number3Int && number2Int > number1Int)
-    {
-        Console.Write($"El número del medio es {number2Int}");
-    }
-    else
-    {
-        Console.Write($"El número del medio es {number1Int}");
-    }
-}
+while (answer!.Equals("s", StringComparison.CurrentCultureIgnoreCase));
+
+Console.WriteLine("Game Over.");
+
