@@ -18,13 +18,13 @@ do
     else
     {
         Console.WriteLine($"Nombre: {name}");
-        Console.WriteLine($"Salario Mensual: {salary}");
+        Console.WriteLine($"Salario Mensual: {salary:C2}");
     }
 
 
     do
     {
-        answer = ConsoleExtension.GetValidOptions("¿Deseas continuar [S]í, [N]o?: ", options);
+        answer = ConsoleExtension.GetValidOptions("¿Deseas continuar [S]í, [N]o: ", options);
     } while (!options.Any(x => x.Equals(answer, StringComparison.CurrentCultureIgnoreCase)));
 
 } while (answer!.Equals("s", StringComparison.CurrentCultureIgnoreCase));
